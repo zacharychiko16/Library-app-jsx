@@ -1,10 +1,14 @@
 import React from "react";
 
-const Cart = ({ cart, changeQuantity }) => {
+const Cart = ({ cart, changeQuantity, removeItem }) => {
   const total = () => {
     let price = 0;
     cart.forEach((item) => {
-      price += +((item.salePrice || item.originalPrice) * item.quantity).toFixed(2)});
+      price += +(
+        (item.salePrice || item.originalPrice) * item.quantity
+      );
+    });
+    return price
   };
 
   return (
@@ -42,7 +46,7 @@ const Cart = ({ cart, changeQuantity }) => {
                                 2
                               )}
                             </span>
-                            <button className="cart__book--remove">
+                            <button className="cart__book--remove" onClick={() =>removeItem(book)}>
                               Remove
                             </button>
                           </div>
@@ -70,19 +74,20 @@ const Cart = ({ cart, changeQuantity }) => {
                     );
                   })}
                 </div>
+                
               </div>
               <div className="total">
                 <div className="total__item total__sub-total">
                   <span>Subtotal</span>
-                  <span>$9.00</span>
+                  <span>${(total() * 0.9).toFixed(2)}</span>
                 </div>
                 <div className="total__item total__tax">
                   <span>Tax</span>
-                  <span></span>
+                  <span>${(total() * 0.1).toFixed(2)}</span>
                 </div>
                 <div className="total__item total__price">
                   <span>Total</span>
-                  <span>${total()}</span>
+                  <span>${total().toFixed(2)}</span>
                 </div>
                 <button
                   className="btn btn__checkout no-cusor"
