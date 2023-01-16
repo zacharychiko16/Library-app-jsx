@@ -7,7 +7,7 @@ import Rating from "./Rating";
 const Book = ({ book }) => {
   return (
     <div className="book">
-      <Link to={`/books/${book.id}`} >
+      <Link to={`/books/${book.id}`}>
         <figure className="book__img--wrapper">
           <img src={book.url} alt="" />
         </figure>
@@ -17,7 +17,7 @@ const Book = ({ book }) => {
           {book.title}
         </Link>
       </div>
-      <Rating rating={book.rating}/>
+      <Rating rating={book.rating} />
       <Price salePrice={book.salePrice} originalPrice={book.originalPrice} />
     </div>
   );

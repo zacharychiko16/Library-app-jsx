@@ -12,11 +12,11 @@ const Discounted = () => {
           </h2>
           <div className="books">
             {books
-            .filter(book => book.salePrice > 0)
-            .slice(0,8)
-            .map((book) => (
-              <Book book={book} key={book.id} />
-            ))}
+              .filter((book) => book.salePrice > 0)
+              .slice(0, 8)
+              .map((book) => (
+                <Book book={book} key={book.id} />
+              ))}
           </div>
         </div>
       </div>
@@ -24,4 +24,4 @@ const Discounted = () => {
   );
 };
 
-export default Discounted
+export default Discounted;
